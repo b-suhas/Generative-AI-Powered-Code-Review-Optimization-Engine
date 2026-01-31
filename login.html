@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | Code Review Agent</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 flex items-center justify-center h-screen text-white">
+
+<div class="bg-slate-800 p-8 rounded-xl w-96">
+    <h1 class="text-2xl font-bold text-center mb-6">Code Review Agent</h1>
+
+    <input id="email" class="w-full mb-3 p-2 rounded bg-slate-700" placeholder="Email">
+    <input id="password" type="password" class="w-full mb-4 p-2 rounded bg-slate-700" placeholder="Password">
+
+    <button onclick="login()"
+        class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded font-semibold">
+        Sign In
+    </button>
+
+    <p class="text-sm text-center mt-4 text-gray-400">
+        Demo: demo@coderev.com / password123
+    </p>
+</div>
+
+<script>
+function login() {
+    // demo login (no backend auth yet)
+    window.location.href = "/dashboard";
+}
+</script>
+
+</body>
+</html>
