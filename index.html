@@ -8,6 +8,30 @@
 
 <body class="bg-slate-900 text-white min-h-screen">
 
+<!-- ================= LOGIN SECTION ================= -->
+<div id="loginPage" class="flex items-center justify-center h-screen">
+    <div class="bg-slate-800 p-8 rounded-xl w-96">
+        <h1 class="text-2xl font-bold text-center mb-6">Code Review Agent</h1>
+
+        <input id="email" class="w-full mb-3 p-2 rounded bg-slate-700" placeholder="Email">
+        <input id="password" type="password"
+               class="w-full mb-4 p-2 rounded bg-slate-700"
+               placeholder="Password">
+
+        <button onclick="login()"
+            class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded font-semibold">
+            Sign In
+        </button>
+
+        <p class="text-sm text-center mt-4 text-gray-400">
+            Demo: demo@coderev.com / password123
+        </p>
+    </div>
+</div>
+
+<!-- ================= MAIN APP SECTION ================= -->
+<div id="appPage" class="hidden">
+
 <header class="p-4 bg-slate-800 text-center text-xl font-bold">
     Intelligent Code Review & Rewrite
 </header>
@@ -36,21 +60,36 @@ Waiting for review...
 
 </main>
 
+</div>
+
+<!-- ================= SCRIPT ================= -->
 <script>
+function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // demo auth
+    if (email === "demo@coderev.com" && password === "password123") {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("appPage").classList.remove("hidden");
+    } else {
+        alert("Invalid credentials");
+    }
+}
+
 async function review() {
     const code = document.getElementById("code").value;
     const resBox = document.getElementById("result");
 
     resBox.textContent = "Analyzing...";
 
-    const res = await fetch("/api/review", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ code })
-    });
-
-    const data = await res.json();
-    resBox.textContent = data.result;
+    // demo response (no backend yet)
+    setTimeout(() => {
+        resBox.textContent =
+`✔ Code looks clean
+✔ Consider adding comments
+✔ Follow consistent naming conventions`;
+    }, 1000);
 }
 </script>
 
